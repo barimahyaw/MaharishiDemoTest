@@ -1,5 +1,5 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
+using static System.Math;
 
 namespace MaharishiDemoTest
 {
@@ -7,15 +7,7 @@ namespace MaharishiDemoTest
     {
         public static int NextPerfectSquare(int n)
         {
-            var nextPerfectSquare = 0;
-
-            if (n < 0) return nextPerfectSquare;
-            var sqrtResult = Math.Sqrt(n);
-            var baseNumber = (int)sqrtResult;
-            var nextNumber = baseNumber + 1;
-            nextPerfectSquare = (int)Math.Pow(nextNumber, 2);
-
-            return nextPerfectSquare;
+            return n < 0 ? 0 : (int)Pow((int)Sqrt(n) + 1, 2);
         }
 
         public static int NUpCount(int[] a, int n)
@@ -36,14 +28,12 @@ namespace MaharishiDemoTest
 
         public static int SumFactor(int[] a)
         {
-            var sum = a.Sum();
-            return a.Count(t => t == sum);
+            return a.Count(t => t == a.Sum());
         }
 
         public static int StantonMeasure(int[] a)
         {
-            var onesCount = a.Count(t => t == 1);
-            return a.Count(t => t == onesCount);
+            return a.Count(t => t == a.Count(t1 => t1 == 1));
         }
 
         public static int PrimeCount(int start, int end)
